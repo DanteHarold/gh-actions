@@ -1,4 +1,4 @@
-name : "Deploy-hq"
+name: "Deploy-hq"
 
 on:
   push:
@@ -8,7 +8,6 @@ jobs:
   deploy-hq:
     runs-on: ubuntu-latest
     steps:
-      run: echo "Deploying to HQ"
-      run: echo "This is a placeholder for the actual deployment script"
-      run: echo "Deployment complete"
-      
+      - run: echo "Deploying to HQ"
+      - run: echo "This is a placeholder for the actual deployment script"
+      - run: echo "Deployment complete"
