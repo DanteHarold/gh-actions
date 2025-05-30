@@ -1,0 +1,14 @@
+name : "Deploy-hq"
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy-hq:
+    runs-on: ubuntu-latest
+    steps:
+      run: echo "Deploying to HQ"
+      run: echo "This is a placeholder for the actual deployment script"
+      run: echo "Deployment complete"
+      
