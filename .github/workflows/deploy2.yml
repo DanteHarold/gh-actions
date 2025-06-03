@@ -1,0 +1,24 @@
+name: Deploy to server
+# This workflow deploys the application to a server using SSH.
+on: 
+  push:
+    branches:
+      - main
+      - second
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hola mundo # This job runs first
+        # This job runs first and prints "Hola mundo"
+        run: echo "Hola mundo"
+  second_job:
+    # This job runs after the first_job
+    # It depends on the first_job to complete before it runs
+    needs: first_job # This job depends on the first_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hola mundo
+        run: echo "Hola mundo segundo"
+        
+
