@@ -8,12 +8,14 @@ on:
 jobs:
   first_job:
     runs-on: ubuntu-latest
+    env:
+      NAME : "World"
     steps:
       - name: Hola mundo # This job runs first
         # This job runs first and prints "Hola mundo"
-        run: echo "Hola mundo"
+        run: echo "Hola ${{ env.NAME }}"
   second_job:
-    # This job runs after the first_job
+    if : ${{ github.ref == 'refs/heads/main' }} # This job runs only on the main branch
     # It depends on the first_job to complete before it runs
     needs: first_job # This job depends on the first_job
     runs-on: ubuntu-latest
