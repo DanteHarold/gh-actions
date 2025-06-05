@@ -56,6 +56,8 @@ jobs:
         uses: actions/download-artifact@v4 # This job downloads the artifact uploaded by the second_job
         with:
           name: test-artifact
+      - name: Cat file
+        run: cat test.log # This job displays the content of the downloaded file
       
         
 
