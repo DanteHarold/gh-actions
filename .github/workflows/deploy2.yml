@@ -7,13 +7,19 @@ on:
       - second
 jobs:
   first_job:
+    name : "First Job" # This job runs first
     runs-on: ubuntu-latest
     env:
       NAME : "World"
     steps:
       - name: Hola mundo # This job runs first
-        # This job runs first and prints "Hola mundo"
         run: echo "Hola ${{ env.NAME }}"
+      - name: Working Directory
+        run: ls -la # This job lists the files in the current directory
+      - name: action
+        uses: actions/checkout@v4 # This job checks out the code from the repository
+      - name: Working Directory after Action
+        run: ls -la # This job lists the files in the current directory
   second_job:
     if : ${{ github.ref == 'refs/heads/main' }} # This job runs only on the main branch
     # It depends on the first_job to complete before it runs
@@ -21,6 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Hola mundo
-        run: echo "Hola mundo segundo"
+        run: echo "Hola mundo segundo ${{ github.ref }} "
         
 
