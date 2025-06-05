@@ -44,7 +44,7 @@ jobs:
       - name: Generar Archivo
         run: echo "Test File, hello" >> test.log # This job generates a file
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3 # This job uploads the file as an artifact
+        uses: actions/upload-artifact@v4 # This job uploads the file as an artifact
         with:
           name: test-artifact
           path : test.log # This job uploads the file as an artifact
