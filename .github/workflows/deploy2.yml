@@ -48,6 +48,14 @@ jobs:
         with:
           name: test-artifact
           path : test.log # This job uploads the file as an artifact
+  third_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4 # This job downloads the artifact uploaded by the second_job
+        with:
+          name: test-artifact
       
         
 
