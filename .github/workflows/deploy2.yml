@@ -9,6 +9,8 @@ jobs:
   first_job:
     name : "First Job" # This job runs first
     runs-on: ubuntu-latest
+    outputs:
+      my_variable: ${{ steps.step_1.outputs.my_variable }} # This output can be used in other jobs
     env:
       NAME : "World"
     steps:
@@ -30,8 +32,15 @@ jobs:
     # It depends on the first_job to complete before it runs
     needs: first_job # This job depends on the first_job
     runs-on: ubuntu-latest
+
+    env :
+      SALIDA : ${{ needs.first_job.outputs.my_variable }} # This job uses the output from the first_job
+
     steps:
       - name: Hola mundo
         run: echo "Hola mundo segundo ${{ github.ref }} "
+      - name: Get Message
+        run: echo "This is a message ${{ env.SALIDA }} "
+      
         
 
