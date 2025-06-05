@@ -1,0 +1,19 @@
+name: Deploy to server
+# This workflow deploys the application to a server using SSH.
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  first_job:
+    name : "First Job" # This job runs first
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false # This allows the workflow to continue running other jobs even if one fails
+      matrix: # This allows running the job on multiple operating systems
+        messages: [Hello, Hi, Hola, Bonjour] # This is a matrix of messages to be used in the job
+
+    steps:
+      - name: Hola mundo # This job runs first
+        run: echo "Hola ${{ matrix.messages }}"
